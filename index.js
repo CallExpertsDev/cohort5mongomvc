@@ -101,4 +101,24 @@ app.delete("/user", async (request, response) => {
   }
 });
 
+app.get("/", async (request, response) => {
+  try {
+    console.log("SEND HOME PAGE");
+    response.sendFile(path.join(__dirname + "/index.html"));
+  } catch (error) {
+    console.log(error);
+    response.status(500).send(error);
+  }
+});
+
+app.get("/about", async (request, response) => {
+  try {
+    console.log("SEND ABOUT PAGE");
+    response.sendFile(path.join(__dirname + "/about.html"));
+  } catch (error) {
+    console.log(error);
+    response.status(500).send(error);
+  }
+});
+
 app.listen(PORT, () => console.log(`App is running on ${PORT}`));
